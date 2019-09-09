@@ -1,0 +1,23 @@
+{
+  "name": "aws-s3-enable-analytics-all-buckets",
+  "version": "1.0.0",
+  "description": "For now, this tool simply enables S3 analytics on all buckets.",
+  "main": "tool.js",
+  "dependencies": {
+    "aws-sdk": "^2.524.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matwerber1/aws-s3-enable-analytics-all-buckets.git"
+  },
+  "author": "matwerber1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matwerber1/aws-s3-enable-analytics-all-buckets/issues"
+  },
+  "homepage": "https://github.com/matwerber1/aws-s3-enable-analytics-all-buckets#readme"
+}
