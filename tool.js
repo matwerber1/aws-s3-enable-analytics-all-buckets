@@ -2,8 +2,8 @@ const aws = require('aws-sdk');
 const s3 = new aws.S3();
 
 // UPDATE AS NEEDED
-const analytics_log_bucket = 'werberm-s3-tests-logs';
-const analytics_log_prefix = 's3_analytics'
+const analytics_bucket = 'werberm-s3-tests-logs';
+const analytics_prefix = 's3_analytics'
 //const analytics_log_bucket_account_id = "999999999999";
 
 async function main() {
@@ -26,8 +26,8 @@ async function EnableS3Analytics(target_bucket) {
 
   var analytics_config_id = 'analytics-config';
   var target_bucket_arn = `arn:aws:s3:::${target_bucket}`;
-  var analytics_log_bucket_arn = `arn:aws:s3:::${analytics_log_bucket}`;
-  var full_log_prefix = `${analytics_log_prefix}/bucket=${target_bucket}`;
+  var analytics_bucket_arn = `arn:aws:s3:::${analytics_bucket}`;
+  var full_prefix = `${analytics_prefix}/bucket=${target_bucket}`;
 
   var params = {
     AnalyticsConfiguration: { 
@@ -36,10 +36,10 @@ async function EnableS3Analytics(target_bucket) {
         DataExport: {
           Destination: { 
             S3BucketDestination: { 
-              Bucket: analytics_log_bucket_arn,
+              Bucket: analytics_bucket_arn,
               Format: "CSV",
               //BucketAccountId: analytics_log_bucket_account_id,
-              Prefix: full_log_prefix
+              Prefix: full_prefix
             }
           },
           OutputSchemaVersion: "V_1"

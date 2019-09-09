@@ -23,19 +23,21 @@ https://github.com/matwerber1/aws-s3-analytics-reporting-with-athena
 1. Open `tool.js` and edit the two variables below: 
 
   ```js
-  const analytics_log_bucket = 'werberm-s3-tests-logs';
-  const analytics_log_prefix = 's3_analytics'
+  const analytics_bucket = 'werberm-s3-tests-logs';
+  const analytics_prefix = 's3_analytics'
   ```
 
-  The `analytics_log_bucket` should be a pre-existing S3 bucket to which you will want your analytics reports sent. The `analytics_log_prefix` is a prefix of your choice, *without* a trailing slash. Note that this should be **all lowercase** if you want to use the Glue catalog (e.g. query with Athena). 
+  The `analytics_bucket` should be a pre-existing S3 bucket to which you will want your analytics reports sent. The `analytics_prefix` is a prefix of your choice, *without* a trailing slash. Note that this should be **all lowercase** if you want to use the Glue catalog (e.g. query with Athena). 
 
-2. Run the script: 
+2. Add a bucket policy to your analytics bucket that allows S3 Analytics to deliver your reports; see the **S3 Bucket Policy for Report Destination Bucket** section of this Readme for details. 
+
+3. Run the script: 
 
   ```sh
   node tool.js
   ```
 
-# S3 Bucket Policies
+# S3 Bucket Policy for Report Destination Bucket
 
 For each bucket where the S3 Analytics reporting is enabled, this tool will configure the analytics policy to save the analytics report in a bucket of your choosing (configured in the code). In order for the report to be delivered to your reporting bucket, the reporting bucket needs a bucket policy that allows the other bucket(s) to put objects into it. 
 
