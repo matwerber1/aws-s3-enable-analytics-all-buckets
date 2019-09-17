@@ -1,6 +1,8 @@
 # AWS S3 Analytics Enabler Tool
 
-This tool simply enables S3 analytics on all buckets. 
+This tool enables S3 analytics on all buckets for a given region and configures the reports to be delivered to a central reporting bucket. 
+
+When S3 analytics reports are configured for delivery to another bucket, the destination bucket must be in the same region as the source bucket. This tool will skip over source buckets that are not in the same region as the report bucket you specify. 
 
 # Support for Athena
 
@@ -23,11 +25,11 @@ https://github.com/matwerber1/aws-s3-analytics-reporting-with-athena
 1. Open `tool.js` and edit the two variables below: 
 
   ```js
-  const analytics_bucket = 'werberm-s3-tests-logs';
-  const analytics_prefix = 's3_analytics'
+  const report_bucket = 'werberm-s3-tests-logs';
+  const report_prefix = 's3_analytics'
   ```
 
-  The `analytics_bucket` should be a pre-existing S3 bucket to which you will want your analytics reports sent. The `analytics_prefix` is a prefix of your choice, *without* a trailing slash. Note that this should be **all lowercase** if you want to use the Glue catalog (e.g. query with Athena). 
+  The `report_bucket` should be a pre-existing S3 bucket to which you will want your analytics reports sent. The `report_prefix` is a prefix of your choice, *without* a trailing slash. Note that this should be **all lowercase** if you want to use the Glue catalog (e.g. query with Athena). 
 
 2. Add a bucket policy to your analytics bucket that allows S3 Analytics to deliver your reports; see the **S3 Bucket Policy for Report Destination Bucket** section of this Readme for details. 
 
