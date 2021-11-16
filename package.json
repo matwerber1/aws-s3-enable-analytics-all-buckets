@@ -4,7 +4,7 @@
   "description": "For now, this tool simply enables S3 analytics on all buckets.",
   "main": "tool.js",
   "dependencies": {
-    "aws-sdk": "^2.524.0"
+    "aws-sdk": "^2.814.0"
   },
   "devDependencies": {},
   "scripts": {
